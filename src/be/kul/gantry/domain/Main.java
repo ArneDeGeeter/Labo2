@@ -5,9 +5,11 @@ import org.json.simple.parser.ParseException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
+        HashMap<Item,Coordinaat> hashMap=new HashMap<>();
         File file = new File("1_10_100_4_FALSE_65_50_50.json");
         Problem prob = null;
         try {
@@ -32,15 +34,10 @@ public class Main {
                 System.out.println(s);
                 System.err.println(e.getMessage());
             }
-        }
-        /*for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                System.out.print(a[i][j]+"\t\t");
+            if (s.getItem() != null) {
+                hashMap.put(s.getItem(), new Coordinaat(((s.getCenterX() - 5) / 10), (s.getCenterY() - 5) / 10));
             }
-            System.out.println();
-        }*/
-
-        System.out.println("jkfldjko");
+        }
         System.out.println(prob.getInputJobSequence());
         System.out.println(prob.getGantries());
     }
