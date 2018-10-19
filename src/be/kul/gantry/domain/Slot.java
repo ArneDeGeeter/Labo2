@@ -81,7 +81,7 @@ public class Slot {
 
     @Override
     public String toString() {
-        return String.format("Slot %d (%d,%d,%d)", id, centerX, centerY, z);
+        return String.format("Slot %d (%d,%d,%d): Item "+item, id, centerX, centerY, z);
     }
 
     public static enum SlotType {
