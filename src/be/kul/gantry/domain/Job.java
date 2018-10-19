@@ -13,13 +13,21 @@ public class Job {
     private final Item item;
 
 
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
+
+    private boolean isFinished;
+
+
     public Job(int id, Item c, Slot from, Slot to) {
         this.id = id;
         this.item = c;
-        this.pickup = new Task(id*2,TaskType.PICKUP);
-        this.place = new Task(id*2+1,TaskType.PLACE);
+        this.pickup = new Task(id * 2, TaskType.PICKUP);
+        this.place = new Task(id * 2 + 1, TaskType.PLACE);
         this.pickup.slot = from;
         this.place.slot = to;
+        isFinished = false;
     }
 
     public int getId() {
@@ -40,7 +48,7 @@ public class Job {
 
     @Override
     public String toString() {
-        return String.format("J%d move %d from %s to %s",id,item.getId(),pickup.slot,place.slot);
+        return String.format("J%d move %d from %s to %s", id, item.getId(), pickup.slot, place.slot);
     }
 
     public class Task {
@@ -77,12 +85,16 @@ public class Job {
 
         @Override
         public String toString() {
-            if(type == TaskType.PICKUP) {
-                return String.format("Pickup %d from %s",Job.this.item.getId(),slot);
+            if (type == TaskType.PICKUP) {
+                return String.format("Pickup %d from %s", Job.this.item.getId(), slot);
             } else {
-                return String.format("Place %d at %s",Job.this.item.getId(),slot);
+                return String.format("Place %d at %s", Job.this.item.getId(), slot);
             }
         }
+    }
+
+    public boolean isFinished() {
+        return isFinished;
     }
 
     public static enum TaskType {
