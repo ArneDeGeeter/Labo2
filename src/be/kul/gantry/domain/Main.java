@@ -38,7 +38,22 @@ public class Main {
                 hashMap.put(s.getItem(), new Coordinaat(((s.getCenterX() - 5) / 10), (s.getCenterY() - 5) / 10));
             }
         }
+
+        for (Job job: prob.getOutputJobSequence()) {
+            if(hashMap.containsKey(job.getItem())) {
+
+            }
+        }
         System.out.println(prob.getInputJobSequence());
         System.out.println(prob.getGantries());
+    }
+    public void getFromStacked(ArrayList<Item> stacked){
+        if(stacked.size()>1){
+            for(int i=stacked.size()-1;i>0;i--){
+                verplaats(stacked.get(i));
+                stacked.remove(i);
+            }
+        }
+
     }
 }
