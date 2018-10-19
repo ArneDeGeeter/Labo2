@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e1ea9cc9-51d4-40d0-9265-605a3c1e7459" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/be/kul/gantry/domain/Main.java" afterPath="$PROJECT_DIR$/src/be/kul/gantry/domain/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/be/kul/gantry/domain/Problem.java" afterPath="$PROJECT_DIR$/src/be/kul/gantry/domain/Problem.java" />
-    </list>
+    <list default="true" id="e1ea9cc9-51d4-40d0-9265-605a3c1e7459" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,8 +41,8 @@
       <file leaf-file-name="Problem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/be/kul/gantry/domain/Problem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="79" column="18" lean-forward="true" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+            <state relative-caret-position="187">
+              <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
               <folding>
                 <element signature="method#writeJsonFile#0;class#Problem#0" expanded="false" />
                 <element signature="method#fromJson#0;class#Problem#0" expanded="false" />
@@ -315,7 +312,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539935934611</updated>
-      <workItem from="1539935939691" duration="2003000" />
+      <workItem from="1539935939691" duration="2096000" />
     </task>
     <task id="LOCAL-00001" summary="ini push">
       <created>1539937017508</created>
@@ -328,7 +325,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2003000" />
+    <option name="totallyTimeSpent" value="2096000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -429,8 +426,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/be/kul/gantry/domain/Problem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="79" column="18" lean-forward="true" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+        <state relative-caret-position="187">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
             <element signature="method#writeJsonFile#0;class#Problem#0" expanded="false" />
             <element signature="method#fromJson#0;class#Problem#0" expanded="false" />
