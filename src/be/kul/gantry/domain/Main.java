@@ -40,6 +40,8 @@ public class Main {
             System.out.println();
         }*/
         System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println(prob.getInputJobSequence());
         System.out.println(prob.getGantries());
     }
