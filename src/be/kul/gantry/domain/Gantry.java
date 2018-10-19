@@ -69,4 +69,17 @@ public class Gantry {
     public boolean canReachSlot(Slot s) {
         return xMin <= s.getCenterX() && s.getCenterX() <= xMax;
     }
+
+    @Override
+    public String toString() {
+        return "Gantry{" +
+                "id=" + id +
+                ", xMin=" + xMin +
+                ", xMax=" + xMax +
+                ", startX=" + startX +
+                ", startY=" + startY +
+                ", xSpeed=" + xSpeed +
+                ", ySpeed=" + ySpeed +
+                '}';
+    }
 }

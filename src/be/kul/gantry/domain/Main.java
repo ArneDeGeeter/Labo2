@@ -19,5 +19,6 @@ public class Main {
         }
         System.out.println(prob.toString());
         ArrayList<Item>[][] a = new ArrayList[100][200];
+        System.out.println(prob.getInputJobSequence());
     }
 }
