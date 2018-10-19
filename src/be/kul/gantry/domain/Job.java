@@ -20,7 +20,13 @@ public class Job {
     }
 
     private boolean isFinished;
-
+    public Job(Item item){
+        this.item=item;
+        id=-1;
+        this.pickup = new Task(id * 2, TaskType.PICKUP);
+        this.place = new Task(id * 2 + 1, TaskType.PLACE);
+        isFinished=false;
+    }
 
     public Job(int id, Item c, Slot from, Slot to) {
         this.id = id;
