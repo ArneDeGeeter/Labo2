@@ -1,5 +1,7 @@
 package be.kul.gantry.domain;
 
+import java.util.Objects;
+
 /**
  * Created by Wim on 12/05/2015.
  */
@@ -49,6 +51,20 @@ public class Job {
     @Override
     public String toString() {
         return String.format("J%d move %d from %s to %s", id, item.getId(), pickup.slot, place.slot);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Job)) return false;
+        Job job = (Job) o;
+        return Objects.equals(item, job.item);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(item);
     }
 
     public class Task {

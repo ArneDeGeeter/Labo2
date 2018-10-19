@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
+    public static ArrayList<Item>[][] storage;
     public static void main(String[] args) {
         HashMap<Item, Coordinaat> hashMap = new HashMap<>();
         File file = new File("1_10_100_4_FALSE_65_50_50.json");
@@ -19,15 +20,15 @@ public class Main {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        ArrayList<Item>[][] a = new ArrayList[(prob.getMaxX() + prob.getMinX()) / 10][prob.getMaxY() / 10];
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                a[i][j] = new ArrayList<>();
+        storage = new ArrayList[(prob.getMaxX() + prob.getMinX()) / 10][prob.getMaxY() / 10];
+        for (int i = 0; i < storage.length; i++) {
+            for (int j = 0; j < storage[0].length; j++) {
+                storage[i][j] = new ArrayList<>();
             }
         }
         for (Slot s : prob.getSlots()) {
             try {
-                a[(s.getCenterX() - 5) / 10][(s.getCenterY() - 5) / 10].add(s.getZ(), s.getItem());
+                storage[(s.getCenterX() - 5) / 10][(s.getCenterY() - 5) / 10].add(s.getZ(), s.getItem());
             } catch (Exception e) {
                /* System.out.println(s);
                 System.err.println(e.getMessage());*/
@@ -37,8 +38,8 @@ public class Main {
             }
         }
 
-        for (Job job: prob.getOutputJobSequence()) {
-            if(hashMap.containsKey(job.getItem())) {
+        for (Job job : prob.getOutputJobSequence()) {
+            if (hashMap.containsKey(job.getItem())) {
 
             }
         }
@@ -46,16 +47,17 @@ public class Main {
         for (Job job : prob.getOutputJobSequence()) {
 
             if (hashMap.containsKey(job.getItem())) {
+
                 System.out.println(job);
             } else {
-              //  System.out.println(job);
-                while(!job.isFinished()){
-                    if(prob.getInputJobSequence().get(0).getItem().getId()==job.getItem().getId()){
+                //  System.out.println(job);
+                while (!job.isFinished()) {
+                    if (prob.getInputJobSequence().get(0).getItem().getId() == job.getItem().getId()) {
                         job.isFinished();
                         System.out.println(job);
                         job.setFinished(true);
-                    }else{
-                        hashMap.put(prob.getInputJobSequence().get(0).getItem(),new Coordinaat(0,0));
+                    } else {
+                        hashMap.put(prob.getInputJobSequence().get(0).getItem(), new Coordinaat(0, 0));
                         prob.getInputJobSequence().remove(0);
                         System.err.println(prob.getInputJobSequence().size());
                     }
@@ -64,9 +66,10 @@ public class Main {
         }
         System.out.println(prob.getGantries());
     }
-    public void getFromStacked(ArrayList<Item> stacked){
-        if(stacked.size()>1){
-            for(int i=stacked.size()-1;i>0;i--){
+
+    public void getFromStacked(ArrayList<Item> stacked) {
+        if (stacked.size() > 1) {
+            for (int i = stacked.size() - 1; i > 0; i--) {
                 verplaats(stacked.get(i));
                 stacked.remove(i);
             }
