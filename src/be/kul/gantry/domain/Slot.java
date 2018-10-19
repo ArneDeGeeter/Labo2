@@ -88,5 +88,6 @@ public class Slot {
         INPUT,
         OUTPUT,
         STORAGE
+
     }
 }
