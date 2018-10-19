@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
+    static ArrayList<Item> [][] storage;
     public static void main(String[] args) {
         HashMap<Item, Coordinaat> hashMap = new HashMap<>();
         File file = new File("1_10_100_4_FALSE_65_50_50.json");
@@ -19,15 +20,15 @@ public class Main {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        ArrayList<Item>[][] a = new ArrayList[(prob.getMaxX() + prob.getMinX()) / 10][prob.getMaxY() / 10];
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                a[i][j] = new ArrayList<>();
+        storage = new ArrayList[(prob.getMaxX() + prob.getMinX()) / 10][prob.getMaxY() / 10];
+        for (int i = 0; i < storage.length; i++) {
+            for (int j = 0; j < storage[0].length; j++) {
+                storage[i][j] = new ArrayList<>();
             }
         }
         for (Slot s : prob.getSlots()) {
             try {
-                a[(s.getCenterX() - 5) / 10][(s.getCenterY() - 5) / 10].add(s.getZ(), s.getItem());
+                storage[(s.getCenterX() - 5) / 10][(s.getCenterY() - 5) / 10].add(s.getZ(), s.getItem());
             } catch (Exception e) {
                /* System.out.println(s);
                 System.err.println(e.getMessage());*/
@@ -46,7 +47,7 @@ public class Main {
         for (Job job : prob.getOutputJobSequence()) {
 
             if (hashMap.containsKey(job.getItem())) {
-                System.out.println(job);
+                getFromStacked(getStack(hashMap.get(job.getItem())),job.getItem());
             } else {
               //  System.out.println(job);
                 while(!job.isFinished()){
@@ -64,13 +65,26 @@ public class Main {
         }
         System.out.println(prob.getGantries());
     }
-    public void getFromStacked(ArrayList<Item> stacked){
-        if(stacked.size()>1){
-            for(int i=stacked.size()-1;i>0;i--){
-                verplaats(stacked.get(i));
-                stacked.remove(i);
+    public static ArrayList<Item> getStack(Coordinaat coordinaat){
+        int x;int y;
+        x=coordinaat.getX();
+        y=coordinaat.getY();
+        return storage[x][y];
+
+
+    }
+    public static void getFromStacked(ArrayList<Item> stacked, Item item){
+        boolean found=false;
+        while(!found){
+            if(stacked.get(stacked.size()-1).getId()==item.getId()){
+                found=true;
+            }
+            else{
+                System.out.println("verplaats: ");
+                stacked.remove(stacked.size()-1);
             }
         }
+        System.out.println("verplaats naar output");
 
     }
 }
