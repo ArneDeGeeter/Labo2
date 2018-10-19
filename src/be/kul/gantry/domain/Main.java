@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-    public static ArrayList<Item>[][] storage;
+    static ArrayList<Item> [][] storage;
     public static void main(String[] args) {
         HashMap<Item, Coordinaat> hashMap = new HashMap<>();
         File file = new File("1_10_100_4_FALSE_65_50_50.json");
@@ -47,8 +47,8 @@ public class Main {
         for (Job job : prob.getOutputJobSequence()) {
 
             if (hashMap.containsKey(job.getItem())) {
-
                 System.out.println(job);
+                getFromStacked(getStack(hashMap.get(job.getItem())),job.getItem());
             } else {
                 //  System.out.println(job);
                 while (!job.isFinished()) {
@@ -67,13 +67,26 @@ public class Main {
         System.out.println(prob.getGantries());
     }
 
-    public void getFromStacked(ArrayList<Item> stacked) {
-        if (stacked.size() > 1) {
-            for (int i = stacked.size() - 1; i > 0; i--) {
-                verplaats(stacked.get(i));
-                stacked.remove(i);
+    public static ArrayList<Item> getStack(Coordinaat coordinaat){
+        int x;int y;
+        x=coordinaat.getX();
+        y=coordinaat.getY();
+        return storage[x][y];
+
+
+    }
+    public static void getFromStacked(ArrayList<Item> stacked, Item item){
+        boolean found=false;
+        while(!found){
+            if(stacked.get(stacked.size()-1).getId()==item.getId()){
+                found=true;
+            }
+            else{
+                System.out.println("verplaats: ");
+                stacked.remove(stacked.size()-1);
             }
         }
+        System.out.println("verplaats naar output");
 
     }
 }
