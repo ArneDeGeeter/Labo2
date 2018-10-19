@@ -299,5 +299,21 @@ public class Problem {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "Problem{" +
+                "minX=" + minX +
+                ", maxX=" + maxX +
+                ", minY=" + minY +
+                ", maxY=" + maxY +
+                ", maxLevels=" + maxLevels +
+                ", items=" + items +
+                ", inputJobSequence=" + inputJobSequence +
+                ", outputJobSequence=" + outputJobSequence +
+                ", gantries=" + gantries +
+                ", slots=" + slots +
+                ", safetyDistance=" + safetyDistance +
+                ", pickupPlaceDuration=" + pickupPlaceDuration +
+                '}';
+    }
 }
