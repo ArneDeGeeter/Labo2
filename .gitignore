@@ -34,3 +34,4 @@ hs_err_pid*
 .idea/workspace.xml
 out/production/Labo2/be/kul/gantry/domain/Main.class
 *.xml___jb_tmp___
+*.xml
