@@ -6,9 +6,19 @@ package be.kul.gantry.domain;
 public class Gantry {
 
     private final int id;
-    private final int xMin,xMax;
-    private final int startX,startY;
-    private final double xSpeed,ySpeed;
+    private final int xMin, xMax;
+    private int startX, startY;
+    private final double xSpeed, ySpeed;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    private Item item;
 
     public Gantry(int id,
                   int xMin, int xMax,
@@ -81,5 +91,28 @@ public class Gantry {
                 ", xSpeed=" + xSpeed +
                 ", ySpeed=" + ySpeed +
                 '}';
+    }
+
+    public double moveGantry(Coordinaat coord) {
+        double movingTime = calculateTime(coord);
+        this.startX = coord.getX() * 10 + 5;
+        this.startY = coord.getY() * 10 + 5;
+        return movingTime;
+    }
+
+    public double calculateTime(Coordinaat coord) {
+        System.out.println(this.startX + " " + this.startY);
+        System.out.println(coord);
+        System.out.println(this.startX - (coord.getX() * 10 + 5));
+        double xTime = (Math.abs(this.startX - (coord.getX() * 10 + 5)) / xSpeed);
+        double yTime = (Math.abs(this.startY - (coord.getY() * 10 + 5)) / ySpeed);
+
+        System.out.println();
+        return xTime > yTime ? xTime : yTime;
+    }
+
+    public String toLog() {
+        return this.id + ";" + Main.timer + ";" + this.startX + ";" + this.startY + ";"
+                + ((this.item == null) ? "null" : this.item.getId());
     }
 }

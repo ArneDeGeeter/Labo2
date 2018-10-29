@@ -25,21 +25,14 @@ public class Problem {
     private final List<Job> inputJobSequence;
     private final List<Job> outputJobSequence;
     private final List<Integer> inputJobSequenceItemId;
-
-    public List<Integer> getInputJobSequenceItemId() {
-        return inputJobSequenceItemId;
-    }
-
-    public List<Integer> getOutputJobSequenceItemId() {
-        return outputJobSequenceItemId;
-    }
-
     private final List<Integer> outputJobSequenceItemId;
-
     private final List<Gantry> gantries;
     private final List<Slot> slots;
     private final int safetyDistance;
     private final int pickupPlaceDuration;
+    private Slot inputSlot;
+    private Slot outputSlot;
+
 
     public Problem(int minX, int maxX, int minY, int maxY, int maxLevels,
                    List<Item> items, List<Gantry> gantries, List<Slot> slots,
@@ -59,6 +52,14 @@ public class Problem {
         this.outputJobSequenceItemId = new ArrayList<>(outputJobSequenceItemId);
         this.safetyDistance = gantrySafetyDist;
         this.pickupPlaceDuration = pickupPlaceDuration;
+    }
+
+    public List<Integer> getInputJobSequenceItemId() {
+        return inputJobSequenceItemId;
+    }
+
+    public List<Integer> getOutputJobSequenceItemId() {
+        return outputJobSequenceItemId;
     }
 
     public int getMinX() {
@@ -336,5 +337,24 @@ public class Problem {
                 ", safetyDistance=" + safetyDistance +
                 ", pickupPlaceDuration=" + pickupPlaceDuration +
                 '}';
+    }
+
+    public void setInputSlot(Slot inputSlot) {
+        this.inputSlot = inputSlot;
+    }
+    public void setOutputSlot(Slot outputSlot) {
+        this.outputSlot = outputSlot;
+    }
+    public Slot getInputSlot(){
+        return this.inputSlot;
+    }
+    public Slot getOutputSlot(){
+        return this.outputSlot;
+    }
+    public Coordinaat getInputSlotCoordinaat(){
+        return new Coordinaat(inputSlot);
+    }
+    public Coordinaat getOutputSlotCoordinaat(){
+        return new Coordinaat(outputSlot);
     }
 }

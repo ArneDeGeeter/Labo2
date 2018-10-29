@@ -11,6 +11,11 @@ public class Coordinaat implements  Comparable{
         this.y = y;
     }
 
+    public Coordinaat(Slot slot) {
+        this.x=(slot.getCenterX()-5)/10;
+        this.y=(slot.getCenterY()-5)/10;
+    }
+
     public int getX() {
         return x;
     }
